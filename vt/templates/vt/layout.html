@@ -1,0 +1,107 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Винг Тсун | Вин Чун | Ving Tsun | Wing Chun">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>{% block title %} Винг Тсун Кунг Фу в Минске {% endblock %}</title>
+		
+		<link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
+		<!-- Bootstrap -->
+		<link rel="stylesheet"
+			  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+			  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+			  crossorigin="anonymous">
+		<style type="text/css">
+		 body {
+			 background-color: #FFF;
+			 margin-top: 0px;
+			 background-image: url({% static 'images/background.png' %});
+			 background-repeat: repeat-x;
+			 background-attachment:fixed;
+		 }
+		 div.header {
+			 width: 920px;
+             margin-left: auto;
+             margin-right: auto;
+             padding-top: 5px;
+             padding-bottom: 0px;
+			 align: left;
+			 text-align: right;
+		 }
+		 div.body {
+             width: 920px;
+             margin-left: auto;
+             margin-right: auto;
+             padding-top: 10px;
+		 }
+		 div.wide-section {
+             width: 920px;
+             margin-left: auto;
+             margin-right: auto;
+			 border-style: solid;
+		 }
+		 h2 {
+			 font-family: "Times New Roman", Times, serif;
+		 }
+		 h3 {
+			 font-family: "Times New Roman", Times, serif;
+		 }
+		 h4 {
+			 font-family: "Times New Roman", Times, serif;
+		 }
+		 p {
+			 font-family: "Times New Roman", Times, serif;
+			 font-size: 16px;
+		 }
+		</style>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+		<div class="header dropdown">
+			<div class="btn-group" role="group" aria-label="Second group">
+				<a href="/" class="btn btn-default">Главная</a>
+			</div>
+			<div class="btn-group" role="group" aria-label="First group">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Информация
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Видео</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/address">Расписание и адрес</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="btn-group" role="group">
+				<a href="/events" class="btn btn-default">События</a>
+			</div>	    			
+			<div class="btn-group" role="group">
+				<a href="/contacts" class="btn btn-default">Контакты</a>
+			</div>
+			<div class="btn-group" role="group">
+				<a href="/shinkage" class="btn btn-default">Синкаге Рю</a>
+			</div>
+		</div>
+
+		<div class="body">
+			{% block body %}{% endblock %}
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+crossorigin="anonymous">
+		</script>
+    </body>
+</html>
