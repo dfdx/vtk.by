@@ -1,0 +1,30 @@
+{% extends "vt/layout.html" %}
+
+{% load staticfiles %}
+
+{% block extrahead %}
+<style type="text/css">  
+ form#login-form {
+     width: 300px;
+     height: 100px;
+     padding: 20px;     
+     position: absolute;
+     top: 40%;
+     left: 50%;     
+     margin: -70px 0 0 -170px;
+ }
+</style>
+{% endblock %}
+
+
+{% block body %}
+
+<form id="login-form" class="input-group input-group-lg" method="POST" action="/signin">
+    {% csrf_token %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <input type="text" name="username" class="form-control" placeholder="Имя пользователя"/>    
+    <input type="password" name="password" class="form-control" placeholder="Пароль"/>
+    <input type="submit" class="form-control" value="Войти"/>
+</form>
+
+{% endblock %}
