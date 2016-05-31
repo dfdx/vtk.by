@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^signout$', views.signout, name='signout'),
     url(r'^news$', views.news, name='news'),
     url(r'^address$', views.address, name='address'),
+    url(r'^schedule$', views.schedule, name='schedule'),
     url(r'^video$', views.video, name='video'),
     url(r'^events$', views.events, name='events'),
     url(r'^contacts$', views.contacts, name='contacts'),

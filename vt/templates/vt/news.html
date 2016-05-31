@@ -3,6 +3,14 @@
 {% load staticfiles %}
 
 {% block body %}
-Новости для народа
+
+{% for news in all_news %}
+<div>
+    <small>{{news.pub_date}}</small>
+    <h3>{{news.title}}</h3>
+    <p>{{news.text}}</p>    
+</div>
+<hr/>
+{% endfor %}
 
 {% endblock %}

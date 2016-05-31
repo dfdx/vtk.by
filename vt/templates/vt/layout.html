@@ -77,9 +77,11 @@
          a.main-menu {
              line-height: 1em;
              font-size: 14px;
-             margin-left: 20px;
+             font-weight: bold;
+             margin-left: 10px;
              display: block;
              text-transform: uppercase;
+             color: #777;
          }
         </style>
 
@@ -87,16 +89,12 @@
         {% endblock %}
 
         <style type="text/css">
-         #topBar { text-align: right; padding: 5px; }
-         #topBar a { text-decoration: none; padding: 5px 7px; }
-         #topBar a:hover { color: black; }
-         #topBar a.active { color: black; }
          .dropdown {
-             width: 70px;
+             width: 120px;
              text-align: center;
              display: none;
              position: absolute;
-             right: 5px;
+             right: -30px;
              background: white;
              color: black;
              border: 1px solid #ccc;
@@ -109,8 +107,15 @@
              z-index: 7000;
              -webkit-font-smoothing: antialiased;
          }
-         .dropdown a { display: block; color: black !important; text-decoration: none; padding: 5px 7px; }
-         .dropdown a:hover { background: #ccc; }
+         .dropdown a {
+             display: block;
+             color: black !important;
+             text-decoration: none;
+             padding: 5px 7px;
+         }
+         .dropdown a:hover {
+             background: #ccc;
+         }
          #arrup { display: none; }
          #arrow { font-size: 0.6em; }
         </style>
@@ -129,19 +134,6 @@
                 <div class="btn-group" role="group" aria-label="Second group">
                     <a href="/news" class="main-menu">Новости</a>
                 </div>
-                <!-- <div class="btn-group" role="group" aria-label="First group">
-                     <div class="dropdown">
-                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     Информация
-                     <span class="caret"></span>
-                     </button>
-                     <ul class="dropdown-menu">
-                     <li><a href="/video">Видео</a></li>
-                     <li role="separator" class="divider"></li>
-                     <li><a href="/address">Расписание и адрес</a></li>
-                     </ul>
-                     </div>
-                     </div> -->
                 <div class="btn-group" role="group">
                     <a href="/events" class="main-menu">События</a>
                 </div>
@@ -151,24 +143,24 @@
                 <div class="btn-group" role="group">
                     <a href="/shinkage" class="main-menu">Синкаге Рю</a>
                 </div>
-                <div id="topBar" class="btn-group">
-                    <a href="#" id="more">ЕЩЁ
+                <div class="btn-group">
+                    <a href="#" class="main-menu" id="more-menu">ЕЩЁ
                         <span id="arrow">
                             <span id="arrdown">&#x25BC;</span>
                             <span id="arrup">&#x25B2;</span>
                         </span>
                     </a>
-                    <div class="dropdown">
-                        <span style="color: #959090">({{ request.user.username }})</span>
-                        <a href="#">
-                            {% if request.user.is_authenticated %}
-                            <a href="/signout" style="color: #959090">Выйти</a>
-                            {% else %}
-                            <a href="/login" style="color: #959090">Войти</a>
-                            {% endif %}
+                    <div id="more-menu-dropdown" class="dropdown">                        
+                        <a href="/schedule">Расписание</a>
+                        <a href="/address">Адрес</a>
+                        <a href="/video">Видео</a>
+                        {% if request.user.is_authenticated %}
+                        <a href="/signout" style="color: #959090">Выйти</a>
+                        {% else %}
+                        <a href="/login" style="color: #959090">Войти</a>
+                        <!-- onclick="window.location='/login'" -->
+                        {% endif %}
                         </a>
-                        <a href="#">Two</a>
-                        <a href="#">Three</a>
                     </div>
                 </div>
             </div>
@@ -179,17 +171,17 @@
         </div>
 
         <script language="javascript">
-         $('#more').click(function() {
+         $('#more-menu').click(function() {
              $(this).toggleClass('active');
              $(this).next('.dropdown').toggle();
              return false;
          });
 
-         $('.dropdown a').click(function() {
-             return false;
-         });
+         /* $('.dropdown a').click(function() {
+          *     return true;
+          * });*/
          $(document).click(function(){
-             $("#dropdown").hide();
+             $("#more-menu-dropdown").hide();
          });
         </script>
     </body>

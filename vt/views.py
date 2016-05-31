@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from .models import *
 
 def index(req):
     return render(req, 'vt/main.html', {})
@@ -42,11 +42,17 @@ def signout(req):
 
 
 def news(req):
-    return render(req, 'vt/news.html', {})
+    news = News.objects.order_by('-pub_date')
+    return render(req, 'vt/news.html', {'all_news': news})
 
 
 def address(req):
-    return render(req, 'vt/address.html', {})
+    return render(req, 'vt/address.html')
+
+
+def schedule(req):
+    trainings = ScheduledTraining.objects.order_by('day').all()    
+    return render(req, 'vt/schedule.html', {'trainings' : trainings})
 
 
 @login_required(login_url='/login')

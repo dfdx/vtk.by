@@ -1,0 +1,21 @@
+{% extends "vt/layout.html" %}
+
+{% block body %}
+<table class="table" style="text-align: center;">
+    <tr>
+        <th style="text-align: center;">День недели</th>
+        <th style="text-align: center;">Время</th>
+        <th style="text-align: center; width: 50%">Место</th>
+    </tr>
+    {% for training in trainings %}
+    <tr>
+        <td>{{ training.day_text }}</td>
+        <td>{{ training.start_time }}-
+            {{ training.end_time }}</td>
+        <td>{{ training.place }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
