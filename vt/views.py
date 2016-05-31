@@ -41,6 +41,10 @@ def signout(req):
     return redirect('/')
 
 
+def news(req):
+    return render(req, 'vt/news.html', {})
+
+
 def address(req):
     return render(req, 'vt/address.html', {})
 

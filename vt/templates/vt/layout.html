@@ -68,6 +68,13 @@
              font-family: "Times New Roman", Times, serif;
              font-size: 16px;
          }
+         a.main-menu {
+             line-height: 1em;
+             font-size: 14px;
+             margin-left: 20px;
+             display: block;
+             text-transform: uppercase;
+         }
         </style>
 
         {% block extrahead %}
@@ -86,7 +93,11 @@
             </div>
             <div class="header-right">
                 <div class="btn-group" role="group" aria-label="Second group">
+                    <!-- <a href="/" class="btn btn-default">Главная</a> -->
                     <a href="/" class="btn btn-default">Главная</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <a href="/news" class="btn btn-default">Новости</a>
                 </div>
                 <div class="btn-group" role="group" aria-label="First group">
                     <div class="dropdown">
