@@ -10,7 +10,8 @@ def index(req):
 
 def loginpage(req):
     """Login page"""
-    return render(req, 'vt/login.html', {})
+    next_page = req.GET.get('next')
+    return render(req, 'vt/login.html', {'next_page': next_page})
 
 
 def signin(req):

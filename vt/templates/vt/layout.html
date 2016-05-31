@@ -78,7 +78,7 @@
         <div class="header">
             <div class="header-left">
                 {% if request.user.is_authenticated %}
-                <span style="color: #959090">{{ request.user.username }}</span> <a href="/signout" style="color: #959090">(Выйти)</a>
+                <a href="/signout" style="color: #959090">Выйти</a> <span style="color: #959090">({{ request.user.username }})</span>
                 {% else %}
                 <a href="/login" style="color: #959090">Войти</a>
                 {% endif %}

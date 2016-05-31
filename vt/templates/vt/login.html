@@ -19,7 +19,7 @@
 
 {% block body %}
 
-<form id="login-form" class="input-group input-group-lg" method="POST" action="/signin">
+<form id="login-form" class="input-group input-group-lg" method="POST" action="/signin{% if next_page %}?next={{next_page}}{% endif %}">
     {% csrf_token %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <input type="text" name="username" class="form-control" placeholder="Имя пользователя"/>    
