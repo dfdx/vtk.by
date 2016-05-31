@@ -10,11 +10,17 @@
         <title>{% block title %} Винг Тсун Кунг Фу в Минске {% endblock %}</title>
 
         <link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
+
         <!-- Bootstrap -->
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
               integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
               crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous">
+        </script>
         <style type="text/css">
          body {
              background-color: #FFF;
@@ -27,7 +33,7 @@
              width: 920px;
              margin-left: auto;
              margin-right: auto;
-             padding-top: 5px;
+             padding-top: 0px;
              padding-bottom: 0px;
              align: left;
              text-align: right;
@@ -35,7 +41,7 @@
          div.header-left {
              width: 150px;
              float: left;
-             line-height: 43px;
+             line-height: 30px;
              padding-left: 5px;
              text-align: left;
          }
@@ -80,46 +86,90 @@
         {% block extrahead %}
         {% endblock %}
 
+        <style type="text/css">
+         #topBar { text-align: right; padding: 5px; }
+         #topBar a { text-decoration: none; padding: 5px 7px; }
+         #topBar a:hover { color: black; }
+         #topBar a.active { color: black; }
+         .dropdown {
+             width: 70px;
+             text-align: center;
+             display: none;
+             position: absolute;
+             right: 5px;
+             background: white;
+             color: black;
+             border: 1px solid #ccc;
+             background-color: #fff;
+             zoom: 1;
+             border-radius: 5px;
+             -moz-box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
+             -webkit-box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
+             box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
+             z-index: 7000;
+             -webkit-font-smoothing: antialiased;
+         }
+         .dropdown a { display: block; color: black !important; text-decoration: none; padding: 5px 7px; }
+         .dropdown a:hover { background: #ccc; }
+         #arrup { display: none; }
+         #arrow { font-size: 0.6em; }
+        </style>
+
     </head>
     <body>
         <div class="header">
             <div class="header-left">
-                {% if request.user.is_authenticated %}
-                <a href="/signout" style="color: #959090">Выйти</a> <span style="color: #959090">({{ request.user.username }})</span>
-                {% else %}
-                <a href="/login" style="color: #959090">Войти</a>
-                {% endif %}
-                
+                <!-- reserved -->
             </div>
             <div class="header-right">
                 <div class="btn-group" role="group" aria-label="Second group">
                     <!-- <a href="/" class="btn btn-default">Главная</a> -->
-                    <a href="/" class="btn btn-default">Главная</a>
+                    <a href="/" class="main-menu">Главная</a>
                 </div>
                 <div class="btn-group" role="group" aria-label="Second group">
-                    <a href="/news" class="btn btn-default">Новости</a>
+                    <a href="/news" class="main-menu">Новости</a>
                 </div>
-                <div class="btn-group" role="group" aria-label="First group">
+                <!-- <div class="btn-group" role="group" aria-label="First group">
+                     <div class="dropdown">
+                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                     Информация
+                     <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu">
+                     <li><a href="/video">Видео</a></li>
+                     <li role="separator" class="divider"></li>
+                     <li><a href="/address">Расписание и адрес</a></li>
+                     </ul>
+                     </div>
+                     </div> -->
+                <div class="btn-group" role="group">
+                    <a href="/events" class="main-menu">События</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="/contacts" class="main-menu">Контакты</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="/shinkage" class="main-menu">Синкаге Рю</a>
+                </div>
+                <div id="topBar" class="btn-group">
+                    <a href="#" id="more">ЕЩЁ
+                        <span id="arrow">
+                            <span id="arrdown">&#x25BC;</span>
+                            <span id="arrup">&#x25B2;</span>
+                        </span>
+                    </a>
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Информация
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/video">Видео</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/address">Расписание и адрес</a></li>
-                        </ul>
+                        <span style="color: #959090">({{ request.user.username }})</span>
+                        <a href="#">
+                            {% if request.user.is_authenticated %}
+                            <a href="/signout" style="color: #959090">Выйти</a>
+                            {% else %}
+                            <a href="/login" style="color: #959090">Войти</a>
+                            {% endif %}
+                        </a>
+                        <a href="#">Two</a>
+                        <a href="#">Three</a>
                     </div>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/events" class="btn btn-default">События</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/contacts" class="btn btn-default">Контакты</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/shinkage" class="btn btn-default">Синкаге Рю</a>
                 </div>
             </div>
         </div>
@@ -127,10 +177,20 @@
         <div class="body">
             {% block body %}{% endblock %}
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-                crossorigin="anonymous">
+
+        <script language="javascript">
+         $('#more').click(function() {
+             $(this).toggleClass('active');
+             $(this).next('.dropdown').toggle();
+             return false;
+         });
+
+         $('.dropdown a').click(function() {
+             return false;
+         });
+         $(document).click(function(){
+             $("#dropdown").hide();
+         });
         </script>
     </body>
 </html>
