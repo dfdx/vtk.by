@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^events$', views.events, name='events'),
     url(r'^contacts$', views.contacts, name='contacts'),
     url(r'^join$', views.join, name='join'),
-    url(r'^shinkage$', views.shinkage, name='shinkage'),    
+    url(r'^shinkage$', views.shinkage, name='shinkage'),
+    url(r'^testpage$', views.testpage, name='testpage'),    
 ]

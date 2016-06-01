@@ -34,3 +34,10 @@ class News(models.Model):
     class Meta:
         verbose_name = 'News'
         verbose_name_plural = 'News'
+
+
+class ExternalVideo(models.Model):
+    order = models.IntegerField()
+    title = models.CharField(max_length=256)
+    link = models.CharField(max_length=2048)
+    

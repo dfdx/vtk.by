@@ -55,9 +55,10 @@ def schedule(req):
     return render(req, 'vt/schedule.html', {'trainings' : trainings})
 
 
-@login_required(login_url='/login')
+# @login_required(login_url='/login')
 def video(req):
-    return render(req, 'vt/video.html', {})
+    videos = ExternalVideo.objects.order_by('order')
+    return render(req, 'vt/video.html', {'videos' : videos})
 
 
 def events(req):
@@ -74,4 +75,8 @@ def join(req):
 
 def shinkage(req):
     return render(req, 'vt/shinkage.html', {})
+
+
+def testpage(req):
+    return render(req, 'vt/testpage.html', {})
 

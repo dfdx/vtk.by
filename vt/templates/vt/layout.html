@@ -11,16 +11,28 @@
 
         <link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
 
-        <!-- Bootstrap -->
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
+        <!-- bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+        </script>
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
               integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
               crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-                crossorigin="anonymous">
-        </script>
+
+        <!-- avgrund (remove?) -->
+        <link rel="stylesheet" href="{% static 'css/avgrund.css' %}"/>
+        <script src="{% static 'js/jquery.simplemodal.min.js' %}"
+                type="text/javascript" charset="utf-8"></script>
+        
+        <!-- jquery modal -->
+        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
+        
         <style type="text/css">
          body {
              background-color: #FFF;
@@ -33,7 +45,7 @@
              width: 920px;
              margin-left: auto;
              margin-right: auto;
-             padding-top: 0px;
+             padding-top: 5px;
              padding-bottom: 0px;
              align: left;
              text-align: right;
@@ -127,11 +139,11 @@
                 <!-- reserved -->
             </div>
             <div class="header-right">
-                <div class="btn-group" role="group" aria-label="Second group">
+                <div class="btn-group" role="group">
                     <!-- <a href="/" class="btn btn-default">Главная</a> -->
                     <a href="/" class="main-menu">Главная</a>
                 </div>
-                <div class="btn-group" role="group" aria-label="Second group">
+                <div class="btn-group" role="group">
                     <a href="/news" class="main-menu">Новости</a>
                 </div>
                 <div class="btn-group" role="group">
@@ -150,7 +162,7 @@
                             <span id="arrup">&#x25B2;</span>
                         </span>
                     </a>
-                    <div id="more-menu-dropdown" class="dropdown">                        
+                    <div id="more-menu-dropdown" class="dropdown">
                         <a href="/schedule">Расписание</a>
                         <a href="/address">Адрес</a>
                         <a href="/video">Видео</a>

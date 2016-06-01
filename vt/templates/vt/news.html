@@ -3,7 +3,10 @@
 {% load staticfiles %}
 
 {% block body %}
-
+<br/>
+<div align="right">
+    <a href="/admin/vt/news" style="padding-right: 10px; color: #444; font-weight: bold;">Управлять</a>
+</div>
 {% for news in all_news %}
 <div>
     <small>{{news.pub_date}}</small>

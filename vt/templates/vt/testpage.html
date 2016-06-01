@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
+    </head>
+    <body>
+        
+        <!-- Modal HTML embedded directly into document -->
+        <div id="ex1" style="display:none;">
+            <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+        </div>
+        
+        <!-- Link to open the modal -->
+        <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+        
+    </body>
+</html>
+

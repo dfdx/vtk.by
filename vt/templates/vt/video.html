@@ -1,8 +1,36 @@
 {% extends "vt/layout.html" %}
 
 {% block body %}
-<br/>
-Здесь будет видео
+<!-- Modal HTML embedded directly into document -->
+<div id="video-modal"
+     style="display:none; width: 840px; height: 630px; padding: 0px 0px;">
+    <iframe id="video-frame" width="840" height="630" src=""
+            frameborder="0" allowfullscreen></iframe>
+</div>
 
+<h3>Видеогалерея</h3>
+
+<br/>
+
+{% for video in videos %}
+<div style="text-align: left;">
+    <a href="#" class="video-link" data-link="{{ video.link }}"
+       style="font-size: 16px; font-weight: bold; color: black;">
+        {{ video.title }}
+    </a>
+</div>
+
+{% endfor %}
+
+
+
+<script language="javascript">
+ $(".video-link").click(function(ev){
+     var a = ev.target;
+     var link = $(a).attr("data-link");
+     $("#video-frame").attr("src", link);
+     $('#video-modal').modal({showClose: false})
+ })
+</script>
 
 {% endblock %}
