@@ -3,5 +3,4 @@
 \#*
 __pycache__
 db.sqlite3
-dump.sql
-nohup.out
+private.py

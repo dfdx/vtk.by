@@ -62,7 +62,8 @@ def video(req):
 
 
 def events(req):
-    return render(req, 'vt/events.html', {})
+    events = Event.objects.order_by('-start_date')
+    return render(req, 'vt/events.html', {'events': events})
 
 
 def contacts(req):

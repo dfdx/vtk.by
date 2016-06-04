@@ -75,12 +75,14 @@ WSGI_APPLICATION = 'vingtsunkuen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+from . import private
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'vt',
-        'USER': 'root',
-        'PASSWORD': 'admin01ADF',  # TODO: this is for dev machine only
+        'USER': private.MYSQL_USER,
+        'PASSWORD': private.MYSQL_PASSWORD,
         'HOST': 'localhost',        
     }
 }

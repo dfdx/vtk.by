@@ -16,6 +16,11 @@
     </tr>
     {% endfor %}
 </table>
-
+{% if request.user.is_authenticated %}
+<div align="left">
+  <a href="/admin/vt/scheduledtraining/add/" style="padding-right: 10px; color: #444; font-weight: bold;">Добавить</a> / &nbsp; 
+  <a href="/admin/vt/scheduledtraining" style="padding-right: 10px; color: #444; font-weight: bold;">Редактировать</a>
+</div>
+{% endif %}
 
 {% endblock %}

@@ -13,7 +13,7 @@
 <br/>
 
 {% for video in videos %}
-<div style="text-align: left;">
+<div style="text-align: left; padding-bottom: 5px;">
     <a href="#" class="video-link" data-link="{{ video.link }}"
        style="font-size: 16px; font-weight: bold; color: black;">
         {{ video.title }}
@@ -22,6 +22,12 @@
 
 {% endfor %}
 
+<br/>
+
+<div align="left">
+  <a href="/admin/vt/externalvideo/add/" style="padding-right: 10px; color: #444; font-weight: bold;">Добавить</a> / &nbsp; 
+  <a href="/admin/vt/externalvideo" style="padding-right: 10px; color: #444; font-weight: bold;">Редактировать</a>
+</div>
 
 
 <script language="javascript">

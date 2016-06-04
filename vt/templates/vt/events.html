@@ -1,36 +1,36 @@
 {% extends "vt/layout.html" %}
 
 {% block body %}
+<h3 align="center">Семинары</h3>
+<br/>
 <table class="table">
   <tr>
     <th style="text-align: center;">Когда</th>
     <th style="text-align: center;">Где</th>
     <th style="text-align: center;">Что</th>
   </tr>
+  {% for event in events %}
   <tr>
     <td style="text-align: center; width: 15%">
-      17-19.06.2016
+      {{ event.start_date }}-{{ event.end_date }}
     </td>
     <td style="text-align: center; width: 30%">
-      Старая весь
+      {{ event.place }}
     </td>
     <td>
-      Семинар по шесту
+      {{ event.description }}
     </td>
-  </tr>
-  <tr>
-    <td style="text-align: center; width: 15%">
-      21.07.2016 – 31.07.2016
-    </td>
-    <td style="text-align: center; width: 30%">
-      В ста метрах в Дзвежино возле Колобржега от Балтийского моря
-    </td>
-    <td>
-      Лагерь Винг Тсун Европейской Атлетической Ассоциации Винг Тсун. Как и обычно руководить тренировочным процессом на двух тренировках в день будут: Сикунг Шиманкевич, Сифу Мариуш Петкун, Сифу Лукаш Печенка и ряд инструкторов из Польши, Литвы, Беларуси и других стран.  Две тренировки в день под надзором толпы инструкторов, питание проживание входят в сумму – $270.
-    </td>
-  </tr>
+  </tr>  
+  {% endfor %}
 </table>
 
+<br/>
 
+{% if request.user.is_authenticated %}
+<div align="left">
+  <a href="/admin/vt/event/add/" style="padding-right: 10px; color: #444; font-weight: bold;">Добавить</a> / &nbsp; 
+  <a href="/admin/vt/event" style="padding-right: 10px; color: #444; font-weight: bold;">Редактировать</a>
+</div>
+{% endif %}
 
 {% endblock %}
