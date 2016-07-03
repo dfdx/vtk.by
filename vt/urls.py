@@ -4,7 +4,8 @@ from . import views
 
 app_name = 'vt'
 urlpatterns = [
-    url(r'^$', views.index, name='main'),
+    url(r'^$', views.index, name='index'),
+    url(r'^main$', views.index, name='main'),
     url(r'^login$', views.loginpage, name='login'),
     url(r'^signin$', views.signin, name='signin'),
     url(r'^signout$', views.signout, name='signout'),

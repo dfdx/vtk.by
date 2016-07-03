@@ -13,7 +13,7 @@
 
         <!-- jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        
+
         <!-- bootstrap -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
                 integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
@@ -24,163 +24,235 @@
               integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
               crossorigin="anonymous">
 
-        <!-- avgrund (remove?) -->
-        <link rel="stylesheet" href="{% static 'css/avgrund.css' %}"/>
-        <script src="{% static 'js/jquery.simplemodal.min.js' %}"
-                type="text/javascript" charset="utf-8"></script>
-        
         <!-- jquery modal -->
         <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
-        
+
+	<style type="text/css">
+	  @media (min-width: 1200px) {
+	  .container{
+          max-width: 1000px;
+	  }
+	  }
+	</style>
+
         <style type="text/css">
-         body {
-             background-color: #FFF;
-             margin-top: 0px;
-             background-image: url({% static 'images/background.png' %});
-             background-repeat: repeat-x;
-             background-attachment:fixed;
-         }
-         div.header {
-             width: 920px;
-             margin-left: auto;
-             margin-right: auto;
-             padding-top: 5px;
-             padding-bottom: 0px;
-             align: left;
-             text-align: right;
-         }
-         div.header-left {
-             width: 150px;
-             float: left;
-             line-height: 30px;
-             padding-left: 5px;
-             text-align: left;
-         }
-         div.header-right {
-             margin-right: auto;
-             margin-right: 0px;
-         }
-         div.body {
-             width: 920px;
-             margin-left: auto;
-             margin-right: auto;
-             padding-top: 10px;
-         }
-         div.wide-section {
-             width: 920px;
-             margin-left: auto;
-             margin-right: auto;
-             border-style: solid;
-         }
-         h2 {
-             font-family: "Times New Roman", Times, serif;
-         }
-         h3 {
-             font-family: "Times New Roman", Times, serif;
-         }
-         h4 {
-             font-family: "Times New Roman", Times, serif;
-         }
-         p {
-             font-family: "Times New Roman", Times, serif;
-             font-size: 16px;
-         }
-         a.main-menu {
-             line-height: 1em;
-             font-size: 14px;
-             font-weight: bold;
-             margin-left: 10px;
-             display: block;
-             text-transform: uppercase;
-             color: #777;
-         }
+         <!-- body { -->
+         <!--     background-color: #FFF; -->
+         <!--     margin-top: 0px; -->
+         <!--     background-image: url({% static 'images/background-tiger.png' %}); -->
+         <!--     // background-repeat: repeat-x; -->
+	 <!--     background-size: cover; -->
+         <!--     background-attachment:fixed; -->
+         <!-- } -->
+         <!-- div.header { -->
+         <!--     width: 920px; -->
+         <!--     margin-left: auto; -->
+         <!--     margin-right: auto; -->
+         <!--     padding-top: 5px; -->
+         <!--     padding-bottom: 0px; -->
+         <!--     align: left; -->
+         <!--     text-align: right; -->
+         <!-- } -->
+         <!-- div.header-left { -->
+         <!--     width: 150px; -->
+         <!--     float: left; -->
+         <!--     line-height: 30px; -->
+         <!--     padding-left: 5px; -->
+         <!--     text-align: left; -->
+         <!-- } -->
+         <!-- div.header-right { -->
+         <!--     margin-right: auto; -->
+         <!--     margin-right: 0px; -->
+         <!-- } -->
+         <!-- div.body { -->
+         <!--     width: 920px; -->
+         <!--     margin-left: auto; -->
+         <!--     margin-right: auto; -->
+         <!--     padding-top: 10px; -->
+         <!-- } -->
+         <!-- div.wide-section { -->
+         <!--     width: 920px; -->
+         <!--     margin-left: auto; -->
+         <!--     margin-right: auto; -->
+         <!--     border-style: solid; -->
+         <!-- } -->
+         <!-- h2 { -->
+         <!--     font-family: "Times New Roman", Times, serif; -->
+         <!-- } -->
+         <!-- h3 { -->
+         <!--     font-family: "Times New Roman", Times, serif; -->
+         <!-- } -->
+         <!-- h4 { -->
+         <!--     font-family: "Times New Roman", Times, serif; -->
+         <!-- } -->
+         <!-- p { -->
+         <!--     font-family: "Times New Roman", Times, serif; -->
+         <!--     font-size: 16px; -->
+         <!-- } -->
+         <!-- a.main-menu { -->
+         <!--     line-height: 1em; -->
+         <!--     font-size: 14px; -->
+         <!--     font-weight: bold; -->
+         <!--     margin-left: 10px; -->
+         <!--     display: block; -->
+         <!--     text-transform: uppercase; -->
+         <!--     color: #777; -->
+         <!-- } -->
         </style>
 
         {% block extrahead %}
         {% endblock %}
 
         <style type="text/css">
-         .dropdown {
-             width: 120px;
-             text-align: center;
-             display: none;
-             position: absolute;
-             right: -30px;
-             background: white;
-             color: black;
-             border: 1px solid #ccc;
-             background-color: #fff;
-             zoom: 1;
-             border-radius: 5px;
-             -moz-box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
-             -webkit-box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
-             box-shadow: rgba(0,0,0,0.1) 0 2px 4px;
-             z-index: 7000;
-             -webkit-font-smoothing: antialiased;
-         }
-         .dropdown a {
-             display: block;
-             color: black !important;
-             text-decoration: none;
-             padding: 5px 7px;
-         }
-         .dropdown a:hover {
-             background: #ccc;
-         }
-         #arrup { display: none; }
-         #arrow { font-size: 0.6em; }
+         <!-- .dropdown { -->
+         <!--     width: 120px; -->
+         <!--     text-align: center; -->
+         <!--     display: none; -->
+         <!--     position: absolute; -->
+         <!--     right: -30px; -->
+         <!--     background: white; -->
+         <!--     color: black; -->
+         <!--     border: 1px solid #ccc; -->
+         <!--     background-color: #fff; -->
+         <!--     zoom: 1; -->
+         <!--     border-radius: 5px; -->
+         <!--     -moz-box-shadow: rgba(0,0,0,0.1) 0 2px 4px; -->
+         <!--     -webkit-box-shadow: rgba(0,0,0,0.1) 0 2px 4px; -->
+         <!--     box-shadow: rgba(0,0,0,0.1) 0 2px 4px; -->
+         <!--     z-index: 7000; -->
+         <!--     -webkit-font-smoothing: antialiased; -->
+         <!-- } -->
+         <!-- .dropdown a { -->
+         <!--     display: block; -->
+         <!--     color: black !important; -->
+         <!--     text-decoration: none; -->
+         <!--     padding: 5px 7px; -->
+         <!-- } -->
+         <!-- .dropdown a:hover { -->
+         <!--     background: #ccc; -->
+         <!-- } -->
+         <!-- #arrup { display: none; } -->
+         <!-- #arrow { font-size: 0.6em; } -->
         </style>
 
     </head>
     <body>
-        <div class="header">
-            <div class="header-left">
-                <!-- reserved -->
+      <div class="container-fluid">
+	<nav class="navbar navbar-default navbar-static-top">
+	  <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Ving Tsun Kuen</a>
             </div>
-            <div class="header-right">
-                <div class="btn-group" role="group">
-                    <!-- <a href="/" class="btn btn-default">Главная</a> -->
-                    <a href="/" class="main-menu">Главная</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/news" class="main-menu">Новости</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/events" class="main-menu">События</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/contacts" class="main-menu">Контакты</a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/shinkage" class="main-menu">Синкаге Рю</a>
-                </div>
-                <div class="btn-group">
-                    <a href="#" class="main-menu" id="more-menu">ЕЩЁ
-                        <span id="arrow">
-                            <span id="arrdown">&#x25BC;</span>
-                            <span id="arrup">&#x25B2;</span>
-                        </span>
-                    </a>
-                    <div id="more-menu-dropdown" class="dropdown">
-                        <a href="/schedule">Расписание</a>
-                        <a href="/address">Адрес</a>
-                        <a href="/video">Видео</a>
-                        {% if request.user.is_authenticated %}
-                        <a href="/signout" style="color: #959090">Выйти</a>
-                        {% else %}
-                        <a href="/login" style="color: #959090">Войти</a>
-                        <!-- onclick="window.location='/login'" -->
-                        {% endif %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="body">
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+		<li><a href="/">Главная</a></li>
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
+		  <ul class="dropdown-menu">
+                    <li><a href="/news">Новости</a></li>
+                    <li><a href="/events">События</a></li>		    
+		    <li><a href="#schools">Школы</a></li>
+		    <li><a href="#line-of-succession">Линия передачи</a></li>
+		    <li><a href="#history">История</a></li>
+		    <li><a href="#pubs">Публикации</a></li>
+		    <li><a href="#evtaa">Членство в ЕВТАА</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#evtaa-sites">Сайты ЕВТАА</a></li>
+		    <li><a href="#evtaa-sites">Другие сайты направления Вонг Шун Леунга</a></li>
+		    <li><a href="#evtaa-sites">Рекоммендуемые сайты</a></li>		    
+		  </ul>
+		</li>
+		<li class="dropdown">
+		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Формы</a>
+		  <ul class="dropdown-menu">
+		    <li class="dropdown-header">Основные формы</li>
+                    <li><a href="#siu-lim-tao">Siu Lim Tao</a></li>
+                    <li><a href="#chum-kiu">Chun Kiu</a></li>
+		    <li><a href="#bil-ji">Bil Ji</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Манекен</li>
+                    <li><a href="#mok-yan-chong">Mok Yan Chong</a></li>
+		    <li><a href="#san-sing-chong">San Sing Chong (?)</a></li>
+		    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Формы с оружием</li>
+		    <li><a href="#log-bim-boon-kwun">Lok Bim Boon Kwun</a></li>
+		    <li><a href="#bart-chum-dao">Bart Cham Dao</a></li>
+		    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Другие упражнения</li>
+		    <li><a href="#lap-sao">Lap Sao</a></li>
+		    <li><a href="#chi-sao">Chi Sao</a></li>
+		  </ul>
+		</li>
+		<li><a href="/video">Видео</a></li>
+		<li><a href="/contacts">Контакты</a></li>
+		<li><a href="/address">Адрес</a></li>		
+	      </ul>
+              <ul class="nav navbar-nav navbar-right">
+		<li><a href="/login">Войти</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+	<div class="body row">
+	  <div class="col-md-2"></div>
+	  <div class="col-md-8">
             {% block body %}{% endblock %}
+	  </div>
+	  <div class="col-md-2"></div>
         </div>
+      </div>
+
+
+        <!-- <div class="header"> -->
+        <!--     <div class="header-left"> -->
+        <!--         <\!-- reserved -\-> -->
+        <!--     </div> -->
+        <!--     <div class="header-right"> -->
+        <!--         <div class="btn-group" role="group"> -->
+        <!--             <\!-- <a href="/" class="btn btn-default">Главная</a> -\-> -->
+        <!--             <a href="/" class="main-menu">Главная</a> -->
+        <!--         </div> -->
+        <!--         <div class="btn-group" role="group"> -->
+        <!--             <a href="/news" class="main-menu">Новости</a> -->
+        <!--         </div> -->
+        <!--         <div class="btn-group" role="group"> -->
+        <!--             <a href="/events" class="main-menu">События</a> -->
+        <!--         </div> -->
+        <!--         <div class="btn-group" role="group"> -->
+        <!--             <a href="/contacts" class="main-menu">Контакты</a> -->
+        <!--         </div> -->
+        <!--         <div class="btn-group" role="group"> -->
+        <!--             <a href="/shinkage" class="main-menu">Синкаге Рю</a> -->
+        <!--         </div> -->
+        <!--         <div class="btn-group"> -->
+        <!--             <a href="#" class="main-menu" id="more-menu">ЕЩЁ -->
+        <!--                 <span id="arrow"> -->
+        <!--                     <span id="arrdown">&#x25BC;</span> -->
+        <!--                     <span id="arrup">&#x25B2;</span> -->
+        <!--                 </span> -->
+        <!--             </a> -->
+        <!--             <div id="more-menu-dropdown" class="dropdown"> -->
+        <!--                 <a href="/schedule">Расписание</a> -->
+        <!--                 <a href="/address">Адрес</a> -->
+        <!--                 <a href="/video">Видео</a> -->
+        <!--                 {% if request.user.is_authenticated %} -->
+        <!--                 <a href="/signout" style="color: #959090">Выйти</a> -->
+        <!--                 {% else %} -->
+        <!--                 <a href="/login" style="color: #959090">Войти</a> -->
+        <!--                 <\!-- onclick="window.location='/login'" -\-> -->
+        <!--                 {% endif %} -->
+        <!--                 </a> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!-- </div> -->
 
         <script language="javascript">
          $('#more-menu').click(function() {
