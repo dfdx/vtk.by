@@ -1,30 +1,65 @@
-{% extends "vt/layout.html" %}
-
 {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Винг Тсун | Вин Чун | Ving Tsun | Wing Chun">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>{% block title %} Винг Тсун Кунг Фу в Минске {% endblock %}</title>
 
-{% block extrahead %}
-<style type="text/css">  
- form#login-form {
-     width: 300px;
-     height: 100px;
-     padding: 20px;     
-     position: absolute;
-     top: 40%;
-     left: 50%;     
-     margin: -70px 0 0 -170px;
- }
-</style>
-{% endblock %}
+        <link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
 
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-{% block body %}
+        <!-- bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+        </script>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+              integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+              crossorigin="anonymous">
 
-<form id="login-form" class="input-group input-group-lg" method="POST" action="/signin{% if next_page %}?next={{next_page}}{% endif %}">
-    {% csrf_token %}
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <input type="text" name="username" class="form-control" placeholder="Имя пользователя"/>    
-    <input type="password" name="password" class="form-control" placeholder="Пароль"/>
-    <input type="submit" class="form-control" value="Войти"/>
-</form>
+        <!-- jquery modal -->
+        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
+	
+	<style>
+	  /* { margin: 0; padding: 0; } */
+	  
+	  body { 
+            background: url("{% static 'images/background-twelve.jpg' %}") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+	  }
 
-{% endblock %}
+	  .vcenter {
+	    display: inline-block;
+	    vertical-align: middle;
+	    float: none;
+	  }
+	</style>
+
+    </head>
+    <body link="#C0C0C0" vlink="#808080" alink="#FF0000">
+      <div class="container" style="min-height: 100%; min-height: 100vh; display: flex; align-items: center;">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+	  <form id="login-form" class="input-group input-group-lg" method="POST" action="/signin{% if next_page %}?next={{next_page}}{% endif %}">
+	    {% csrf_token %}
+	    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	    <input type="text" name="username" class="form-control" placeholder="Имя пользователя"/>    
+	    <input type="password" name="password" class="form-control" placeholder="Пароль"/>
+	    <input type="submit" class="form-control" value="Войти"/>
+	  </form>
+	</div>
+	<div class="col-md-4"></div>
+      </div>      
+    </body>
+</html>

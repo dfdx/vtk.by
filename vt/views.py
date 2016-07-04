@@ -4,12 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
 
-# TODO: remove when main is replaced
 def index(req):
     return render(req, 'vt/index.html', {})
-
-def main(req):
-    return render(req, 'vt/main.html', {})
 
 
 def loginpage(req):
@@ -72,14 +68,6 @@ def events(req):
 
 def contacts(req):
     return render(req, 'vt/contacts.html', {})
-
-
-def join(req):
-    return render(req, 'vt/join.html', {})
-
-
-def shinkage(req):
-    return render(req, 'vt/shinkage.html', {})
 
 
 def testpage(req):

@@ -1,22 +1,21 @@
 {% extends "vt/layout.html" %}
 
 {% block body %}
-<table class="table">
-  <tr>
-    <td align="right">
-      <h3>по карте</h3>
-      <p>улица Калиновского, 111, СК "Олимпиец"</p>      
-      <p>15 минут пешком от ст.м. Восток</p>
-    </td>
-    <td style="text-align: right; width: 65%; padding-right: 20px;">
-      <h3>по навигатору</h3>
-      <p>широта: 53°56′44″N (53.945447)</p>
-      <p>долгота: 27°38′58″E (27.649524)</p>
-    </td>
-  </tr>
-</table>
-<div style="text-align: center;">  
-  <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=OJ90b_7SdOk2JGvpy2pgCDKdHTNSNWIZ&width=920&height=500&lang=ru_RU&sourceType=constructor&scroll=true"></script>
+<div class="row">
+  <div class="col-md-6 text-right">
+    <h3>по карте</h3>
+    <p>улица Калиновского, 111, СК "Олимпиец"</p>
+    <p>15 минут пешком от ст.м. Восток</p>
+  </div>
+  <div class="col-md-6 text-right">
+    <h3>по навигатору</h3>
+    <p>широта: 53°56′44″N (53.945447)</p>
+    <p>долгота: 27°38′58″E (27.649524)</p>
+  </div>
 </div>
-
+<div class="row">
+  <div class="col-md-12" style="text-align: center;">  
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=OJ90b_7SdOk2JGvpy2pgCDKdHTNSNWIZ&width=1030&height=500&lang=ru_RU&sourceType=constructor&scroll=true"></script>
+  </div>
+</div>
 {% endblock %}

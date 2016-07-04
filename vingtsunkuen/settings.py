@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'vt.apps.VtConfig',
+    'sr.apps.SrConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

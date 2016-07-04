@@ -24,10 +24,12 @@
 
 <br/>
 
+{% if request.user.is_authenticated %}
 <div align="left">
   <a href="/admin/vt/externalvideo/add/" style="padding-right: 10px; color: #444; font-weight: bold;">Добавить</a> / &nbsp; 
   <a href="/admin/vt/externalvideo" style="padding-right: 10px; color: #444; font-weight: bold;">Редактировать</a>
 </div>
+{% endif %}
 
 
 <script language="javascript">

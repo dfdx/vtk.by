@@ -1,8 +1,64 @@
-{% extends "vt/layout.html" %}
-
 {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Винг Тсун | Вин Чун | Ving Tsun | Wing Chun">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>{% block title %} Винг Тсун Кунг Фу в Минске {% endblock %}</title>
 
-{% block body %}
-<div class="col-md-4"><a href="/news" style="color: red;">VING TSUN KUEN</a></div>
-<div class="col-md-4"><a href="#shinkage-ryu" style="color: blue;">SHINKAGE RYU</a></div>
-{% endblock %}
+        <link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
+
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+        </script>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+              integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+              crossorigin="anonymous">
+
+        <!-- jquery modal -->
+        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
+	
+	<style>
+	  /* { margin: 0; padding: 0; } */
+	  
+	  body { 
+            background: url("{% static 'images/background-twelve.jpg' %}") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+	  }
+
+	  .vcenter {
+	    display: inline-block;
+	    vertical-align: middle;
+	    float: none;
+	  }
+	</style>
+
+    </head>
+    <body link="#C0C0C0" vlink="#808080" alink="#FF0000">
+      <div class="container" style="min-height: 100%; min-height: 100vh; display: flex; align-items: center;">
+	<div class="row" style="width: 100%;">
+	  <div class="col-md-3"></div>
+	  <div class="col-md-3 vcenter" style="height: 50px; text-align: right; border-right: 2px solid #333;">
+	    <a href="/vt" style="font-size: 30px; padding-right: 10px;">Ving Tsun Kuen</a>
+	  </div>
+	  <div class="col-md-3 vcenter" style="height: 50px;">
+	    <a href="/sr" style="font-size: 30px; padding-left: 0px;">Shinkage Ryū</a>
+	  </div>
+	  <div class="col-md-3"></div>
+        </div>
+      </div>
+    </body>
+</html>

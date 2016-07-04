@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+import vt.views as vtviews
 
 urlpatterns = [
-    url(r'', include('vt.urls')),
+    url(r'^$', vtviews.index, name='index'),
+    url(r'^login$', vtviews.loginpage, name='login'),
+    url(r'^signin$', vtviews.signin, name='signin'),
+    url(r'^signout$', vtviews.signout, name='signout'),
+    url(r'^vt/', include('vt.urls')),
+    url(r'^sr', include('sr.urls')),
     url(r'^admin/', admin.site.urls),
 ]
