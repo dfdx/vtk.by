@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponse, render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -31,11 +31,11 @@ def signin(req):
         else:
             return render(req, 'vt/login.html',
                           {'error_message' : 'Пользователь не активен'})
-    else:        
+    else:
         return render(req, 'vt/login.html',
                       {'error_message' : 'Неверный логин и/или пароль'})
 
-    
+
 def signout(req):
     logout(req)
     return redirect('/')
@@ -51,11 +51,10 @@ def address(req):
 
 
 def schedule(req):
-    trainings = ScheduledTraining.objects.order_by('day').all()    
+    trainings = ScheduledTraining.objects.order_by('day').all()
     return render(req, 'vt/schedule.html', {'trainings' : trainings})
 
 
-# @login_required(login_url='/login')
 def video(req):
     videos = ExternalVideo.objects.order_by('order')
     return render(req, 'vt/video.html', {'videos' : videos})
@@ -73,3 +72,27 @@ def contacts(req):
 def testpage(req):
     return render(req, 'vt/testpage.html', {})
 
+
+# free form pages
+
+def pages(req):
+    slug = req.path.rsplit('/', 1)[-1]
+    page = get_object_or_404(Page, slug=slug)    
+    return render(req, 'vt/page.html', {'page': page})
+
+
+@login_required(login_url='/login')
+def editpage(req):
+    slug = req.GET['slug']
+    page = get_object_or_404(Page, slug=slug)    
+    return render(req, 'vt/editpage.html', {'page': page})
+
+
+@login_required(login_url='/login')
+def savepage(req):
+    slug = req.POST['slug'] 
+    Page.objects.update_or_create({
+        'text': req.POST['text'],
+        'lang':  req.POST['lang']
+    }, slug=slug)
+    return redirect('/vt/' + req.POST['slug'])

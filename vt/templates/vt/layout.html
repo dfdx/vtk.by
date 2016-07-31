@@ -25,121 +25,144 @@
               crossorigin="anonymous">
 
         <!-- jquery modal -->
-        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'js/jquery.modal.min.js' %}" charset="utf-8"></script>
         <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
 
-	<style type="text/css">
-	  @media (min-width: 1200px) {
-	    .container{
-              max-width: 1000px;
-	    }
-	  }
-	</style>
+        <!-- js.cookie -->
+        <script src="{% static 'js/js.cookie.js' %}"></script>
+        
+        <!-- pagedown -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Editor.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Sanitizer.min.js"></script>
 
-	<!-- <style> -->
-	<!--   { margin: 0; padding: 0; } -->
+        <link rel="stylesheet" href="//cdn.rawgit.com/balpha/pagedown/master/demo/browser/demo.css" />
 
-	<!--   body {  -->
+        <style>
+         .wmd-button > span {
+             background-image:
+             url('//cdn.rawgit.com/derobins/wmd/master/images/wmd-buttons.png');
+             background-repeat: no-repeat;
+             background-position: 0px 0px;
+             width: 20px;
+             height: 20px;
+             display: inline-block;
+         }
+        </style>
+        
+        
+	    <style type="text/css">
+	     @media (min-width: 1200px) {
+	         .container{
+                 max-width: 1000px;
+	         }
+	     }
+	    </style>
+
+	    <!-- <style> -->
+	    <!--   { margin: 0; padding: 0; } -->
+
+	    <!--   body {  -->
         <!--     background: url("{% static 'images/background-twelve.jpg' %}") no-repeat center center fixed;  -->
         <!--     -webkit-background-size: cover; -->
         <!--     -moz-background-size: cover; -->
         <!--     -o-background-size: cover; -->
         <!--     background-size: cover; -->
-	<!--   } -->
-	<!-- </style> -->
+	    <!--   } -->
+	    <!-- </style> -->
 
         {% block extrahead %}
         {% endblock %}
 
     </head>
     <body>
-      <div class="container-fluid">
-	<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px;">
-	  <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		<span class="sr-only">Toggle navigation</span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-              </button>
-	      <a class="navbar-brand" href="#"><img src="{% static 'images/logo-transparent.png' %}" style="margin-top: -15px;"/></a>
-              <a class="navbar-brand" href="#">Ving Tsun Kuen</a>
+        <div class="container-fluid">
+	        <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px;">
+	            <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+                        </button>
+	                    <a class="navbar-brand" href="#"><img src="{% static 'images/logo-transparent.png' %}" style="margin-top: -15px;"/></a>
+                        <a class="navbar-brand" href="#">Ving Tsun Kuen</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+		                    <!-- <li><a href="/">Главная</a></li> -->
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
+		                        <ul class="dropdown-menu">
+                                    <li><a href="/vt/news">Новости</a></li>
+                                    <li><a href="/vt/events">События</a></li>
+		                            <li><a href="#schools">Школы</a></li>
+		                            <li><a href="#line-of-succession">Линия передачи</a></li>
+		                            <li><a href="#history">История</a></li>
+		                            <li><a href="#pubs">Публикации</a></li>
+		                            <li><a href="#evtaa">Членство в ЕВТАА</a></li>
+		                            <li role="separator" class="divider"></li>
+		                            <li><a href="#evtaa-sites">Сайты ЕВТАА</a></li>
+		                            <li><a href="#evtaa-sites">Другие сайты направления Вонг Шун Леунга</a></li>
+		                            <li><a href="#evtaa-sites">Рекоммендуемые сайты</a></li>
+		                        </ul>
+		                    </li>
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Техники</a>
+		                        <ul class="dropdown-menu">
+		                            <li class="dropdown-header">Основные формы</li>
+                                    <li><a href="siu-lim-tao">Siu Lim Tao</a></li>
+                                    <li><a href="#chum-kiu">Chun Kiu</a></li>
+		                            <li><a href="#bil-ji">Bil Ji</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Манекен</li>
+                                    <li><a href="#mok-yan-chong">Mok Yan Chong</a></li>
+		                            <li><a href="#san-sing-chong">San Sing Chong (?)</a></li>
+		                            <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Формы с оружием</li>
+		                            <li><a href="#log-bim-boon-kwun">Lok Bim Boon Kwun</a></li>
+		                            <li><a href="#bart-chum-dao">Bart Cham Dao</a></li>
+		                            <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">Другие упражнения</li>
+		                            <li><a href="#lap-sao">Lap Sao</a></li>
+		                            <li><a href="#chi-sao">Chi Sao</a></li>
+		                        </ul>
+		                    </li>
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
+		                        <ul class="dropdown-menu">
+                                    <li><a href="#photo">Фото</a></li>
+		                            <li><a href="/vt/video">Видео</a></li>
+		                        </ul>
+		                    </li>
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контакты</a>
+		                        <ul class="dropdown-menu">
+                                    <li><a href="/vt/contacts">Наша школа</a></li>
+		                            <li><a href="/vt/address">Адрес</a></li>
+		                            <li role="separator" class="divider"></li>
+		                            <li><a href="#other-schools">Другие школы</a></li>
+		                        </ul>
+		                    </li>		
+	                    </ul>
+                        <ul class="nav navbar-nav navbar-right">
+		                    {% if request.user.is_authenticated %}
+                            <li><a href="/signout">Выйти</a></li>
+                            {% else %}
+                            <li><a href="/login">Войти</a></li>                        
+                            {% endif %}
+                        </ul>
+                    </div><!--/.nav-collapse -->
+	            </div>
+	        </nav>
+	        <div class="body row">
+	            <div class="col-md-2"></div>
+	            <div class="col-md-8">
+                    {% block body %}{% endblock %}
+	            </div>
+	            <div class="col-md-2"></div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-		<!-- <li><a href="/">Главная</a></li> -->
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
-		  <ul class="dropdown-menu">
-                    <li><a href="/vt/news">Новости</a></li>
-                    <li><a href="/vt/events">События</a></li>
-		    <li><a href="#schools">Школы</a></li>
-		    <li><a href="#line-of-succession">Линия передачи</a></li>
-		    <li><a href="#history">История</a></li>
-		    <li><a href="#pubs">Публикации</a></li>
-		    <li><a href="#evtaa">Членство в ЕВТАА</a></li>
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#evtaa-sites">Сайты ЕВТАА</a></li>
-		    <li><a href="#evtaa-sites">Другие сайты направления Вонг Шун Леунга</a></li>
-		    <li><a href="#evtaa-sites">Рекоммендуемые сайты</a></li>
-		  </ul>
-		</li>
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Техники</a>
-		  <ul class="dropdown-menu">
-		    <li class="dropdown-header">Основные формы</li>
-                    <li><a href="#siu-lim-tao">Siu Lim Tao</a></li>
-                    <li><a href="#chum-kiu">Chun Kiu</a></li>
-		    <li><a href="#bil-ji">Bil Ji</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Манекен</li>
-                    <li><a href="#mok-yan-chong">Mok Yan Chong</a></li>
-		    <li><a href="#san-sing-chong">San Sing Chong (?)</a></li>
-		    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Формы с оружием</li>
-		    <li><a href="#log-bim-boon-kwun">Lok Bim Boon Kwun</a></li>
-		    <li><a href="#bart-chum-dao">Bart Cham Dao</a></li>
-		    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Другие упражнения</li>
-		    <li><a href="#lap-sao">Lap Sao</a></li>
-		    <li><a href="#chi-sao">Chi Sao</a></li>
-		  </ul>
-		</li>
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
-		  <ul class="dropdown-menu">
-                    <li><a href="#photo">Фото</a></li>
-		    <li><a href="/vt/video">Видео</a></li>
-		  </ul>
-		</li>
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контакты</a>
-		  <ul class="dropdown-menu">
-                    <li><a href="/vt/contacts">Наша школа</a></li>
-		    <li><a href="/vt/address">Адрес</a></li>
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#other-schools">Другие школы</a></li>
-		  </ul>
-		</li>		
-	      </ul>
-              <ul class="nav navbar-nav navbar-right">
-		{% if request.user.is_authenticated %}
-                <li><a href="/signout">Выйти</a></li>
-                {% else %}
-                <li><a href="/login">Войти</a></li>                        
-                {% endif %}
-              </ul>
-            </div><!--/.nav-collapse -->
-	  </div>
-	</nav>
-	<div class="body row">
-	  <div class="col-md-2"></div>
-	  <div class="col-md-8">
-            {% block body %}{% endblock %}
-	  </div>
-	  <div class="col-md-2"></div>
         </div>
-      </div>
     </body>
 </html>

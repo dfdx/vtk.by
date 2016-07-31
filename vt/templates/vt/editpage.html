@@ -1,0 +1,64 @@
+{% extends "vt/layout.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+<br/>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Редактировать</a></li>
+    <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Просмотреть</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="edit">
+        <div id="wmd-button-bar"></div>
+        <form id="page-edit-form" method="POST" action="/vt/savepage">
+            {% csrf_token %}
+            <input type="hidden" name="slug" value="{{page.slug}}"/>
+            <input type="hidden" name="lang" value="markdown"/>
+            <textarea id="wmd-input" name="text" class="wmd-input">{{page.text}}</textarea>            
+        </form>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="preview">
+        <br/>        
+        <div id="wmd-preview" class="wmd-panel wmd-preview"
+                 style="width: 100%; margin: 0px; background-color: transparent;"></div>
+    </div>
+</div>
+
+
+
+
+
+<br/>
+{% if request.user.is_authenticated %}
+<div align="left">
+  <a href="#" onclick="$('#page-edit-form').submit()" style="padding-right: 10px; color: #444; font-weight: bold;">Сохранить</a>
+</div>
+{% endif %}
+
+<script>
+ var converter = Markdown.getSanitizingConverter();
+ var editor = new Markdown.Editor(converter);
+ editor.run();
+</script>
+
+<!-- <script>
+     function savePage() {
+     var slug = "{{page.slug}}"
+     var text = $("#wmd-input").value
+     var lang = "markdown"
+     var csrfmiddlewaretoken = Cookies.get("csrfmiddlewaretoken")
+     $.post("/vt/savepage", {
+     slug: slug,
+     text: text,
+     lang: lang,
+     csrfmiddlewaretoken: csrfmiddlewaretoken
+     })
+     }
+     </script> -->
+
+{% endblock %}

@@ -41,3 +41,11 @@ class ExternalVideo(models.Model):
     title = models.CharField(max_length=256)
     link = models.CharField(max_length=2048)
     
+
+class Page(models.Model):
+    slug = models.CharField(max_length=1024)
+    text = models.TextField()
+    lang = models.CharField(max_length=20)  # 'html' or 'markdown'
+    
+    def __str__(self):
+        return "Page(%s)" % (self.slug,)
