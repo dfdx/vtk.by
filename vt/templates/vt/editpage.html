@@ -35,7 +35,7 @@
 
 <br/>
 {% if request.user.is_authenticated %}
-<div align="left">
+<div align="right">
   <a href="#" onclick="$('#page-edit-form').submit()" style="padding-right: 10px; color: #444; font-weight: bold;">Сохранить</a>
 </div>
 {% endif %}
@@ -45,20 +45,5 @@
  var editor = new Markdown.Editor(converter);
  editor.run();
 </script>
-
-<!-- <script>
-     function savePage() {
-     var slug = "{{page.slug}}"
-     var text = $("#wmd-input").value
-     var lang = "markdown"
-     var csrfmiddlewaretoken = Cookies.get("csrfmiddlewaretoken")
-     $.post("/vt/savepage", {
-     slug: slug,
-     text: text,
-     lang: lang,
-     csrfmiddlewaretoken: csrfmiddlewaretoken
-     })
-     }
-     </script> -->
 
 {% endblock %}

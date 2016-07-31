@@ -75,22 +75,30 @@ def testpage(req):
 
 # free form pages
 
-def pages(req):
+def viewpage(req):
     slug = req.path.rsplit('/', 1)[-1]
-    page = get_object_or_404(Page, slug=slug)    
-    return render(req, 'vt/page.html', {'page': page})
+    pages = Page.objects.filter(slug=slug)
+    if len(pages) == 1:        
+        return render(req, 'vt/page.html', {'page': pages[0]})
+    else:
+        return render(req, 'vt/page-doesnt-exist.html', {'slug': slug})
 
 
 @login_required(login_url='/login')
 def editpage(req):
     slug = req.GET['slug']
-    page = get_object_or_404(Page, slug=slug)    
-    return render(req, 'vt/editpage.html', {'page': page})
+    pages = Page.objects.filter(slug=slug)
+    if len(pages) == 1:
+        return render(req, 'vt/editpage.html', {'page': pages[0]})
+    else:
+        new_page = Page(slug=slug, text='', lang='markdown')
+        return render(req, 'vt/editpage.html', {'page': new_page})
+        
 
 
 @login_required(login_url='/login')
 def savepage(req):
-    slug = req.POST['slug'] 
+    slug = req.POST['slug']
     Page.objects.update_or_create({
         'text': req.POST['text'],
         'lang':  req.POST['lang']

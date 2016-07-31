@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^testpage$', views.testpage, name='testpage'),
     url(r'^editpage$', views.editpage, name='editpage'),
     url(r'^savepage$', views.savepage, name='savepage'),
-    url(r'^', views.pages, name='pages'),
+    url(r'^', views.viewpage, name='viewpage'),
 ]
