@@ -7,11 +7,13 @@
 
 <div style="text-align: center">
     <br/>
-    <font style="font-size: 20px">Этой страницы не существует</font>
+    <font style="font-size: 20px">Этой страницы пока не существует</font>
+    <br/>
+    <font style="font-size: 15px">(но вы можете погулять по другим)</font>
     <br/>
     {% if request.user.is_authenticated %}
     <font style="font-size: 20px; align: center;">
-        <a href="/vt/editpage?slug={{slug}}">Создать её?</a>
+        <a href="/vt/editpage?slug={{slug}}">Создать страницу?</a>
     </font>
     {% endif %}
 
