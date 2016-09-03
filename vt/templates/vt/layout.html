@@ -61,15 +61,15 @@
          }
         </style>
 
-
+	
 	<style type="text/css">
 	 @media (min-width: 1200px) {
 	     .container{
-                 max-width: 1000px;
+		 max-width: 1000px;
 	     }
-	 }
+	 }	 
 	</style>
-
+	
 	<style>
 	  .vt-main-menu {
 	      /* color: #0000FF; */
@@ -86,18 +86,27 @@
             background-size: cover;
 	  }
 
+	 .container-fluid {
+	     padding: 0px;
+	 }
+
 	 .navbar {
 	     margin-bottom: 0px;
 	     margin-left: auto;
 	     margin-right: auto;
-	     width: 68%;
 	     background-color: rgba(255, 255, 255, 0.9);
 	 }
+
+	 /* @media only screen and (min-device-width : 768px) {
+	    .navbar {
+	    width: 68%;
+	    }
+	    } */
 
 	 .central-div {
 	     background-color: rgba(255, 255, 255, 0.9);
 	     height: 100%;
-	     padding-left: 2%;
+	     padding-left: 5%;
 	     padding-right: 2%;
  	     padding-bottom: 2%;
 	 }
@@ -112,6 +121,7 @@
 	    <nav class="navbar navbar-default navbar-static-top">
 	        <div class="container">
                     <div class="navbar-header vt-main-menu">
+			<!-- this button shows main menu when viewing from mobile devices -->
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		            <span class="sr-only">Toggle navigation</span>
 		            <span class="icon-bar"></span>
