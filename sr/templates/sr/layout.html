@@ -5,11 +5,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Синкаге Рю | Шинкаге Рю | Shinkage Ryū | Shinkage Ryu">
+        <meta name="description" content="Синкаге Рю | Shinkage Ryu">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>{% block title %} Сикаге Рю в Минске {% endblock %}</title>
+        <title>{% block title %} Синкаге Рю в Минске {% endblock %}</title>
 
-        <link rel="icon" href="{% static 'images/favicon-transparent.ico' %}">
+        <link rel="icon" href="{% static 'images/logo_transparent.ico' %}">
 
         <!-- jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -25,8 +25,16 @@
               crossorigin="anonymous">
 
         <!-- jquery modal -->
-        <script src="{% static 'js/jquery.modal.min.js' %}" type="text/javascript" charset="utf-8"></script>
+        <script src="{% static 'js/jquery.modal.min.js' %}" charset="utf-8"></script>
         <link rel="stylesheet" href="{% static 'css/jquery.modal.min.css' %}"/>
+
+        <!-- js.cookie -->
+        <script src="{% static 'js/js.cookie.js' %}"></script>
+
+        <!-- pagedown -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Editor.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Sanitizer.min.js"></script>
 
         <!-- google analytics -->
         <script>
@@ -34,18 +42,74 @@
              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                                   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-         
+
          ga('create', 'UA-81834433-1', 'auto');
          ga('send', 'pageview');
-         
+
         </script>
-        
+
+        <link rel="stylesheet" href="//cdn.rawgit.com/balpha/pagedown/master/demo/browser/demo.css" />
+
+        <style>
+         .wmd-button > span {
+             background-image: url('//cdn.rawgit.com/derobins/wmd/master/images/wmd-buttons.png');
+             background-repeat: no-repeat;
+             background-position: 0px 0px;
+             width: 20px;
+             height: 20px;
+             display: inline-block;
+         }
+        </style>
+
+	
 	<style type="text/css">
-	  @media (min-width: 1200px) {
-	    .container{
-              max-width: 1000px;
-	    }
+	 @media (min-width: 1200px) {
+	     .container{
+		 max-width: 1000px;
+	     }
+	 }	 
+	</style>
+	
+	<style>
+	  .vt-main-menu {
+	      /* color: #0000FF; */
 	  }
+	</style>
+
+	<style>
+	  body {
+            /* background: url("{% static 'images/background-twelve.jpg' %}") no-repeat center center fixed; */
+	    background: url("{% static 'images/bg2.jpg' %}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+	  }
+
+	 .container-fluid {
+	     padding: 0px;
+	 }
+
+	 .navbar {
+	     margin-bottom: 0px;
+	     margin-left: auto;
+	     margin-right: auto;
+	     background-color: rgba(255, 255, 255, 0.9);
+	 }
+
+	 /* @media only screen and (min-device-width : 768px) {
+	    .navbar {
+	    width: 68%;
+	    }
+	    } */
+
+	 .central-div {
+	     background-color: rgba(255, 255, 255, 0.9);
+	     height: 100%;
+	     padding-left: 5%;
+	     padding-right: 2%;
+ 	     padding-bottom: 2%;
+	 }
 	</style>
 
         {% block extrahead %}
@@ -53,61 +117,61 @@
 
     </head>
     <body>
-      <div class="container-fluid">
-	<nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px;">
-	  <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		<span class="sr-only">Toggle navigation</span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-              </button>
-	      <!-- <a class="navbar-brand" href="#"><img src="{% static 'images/logo-transparent.png' %}" style="margin-top: -15px;"/></a> -->
-              <a class="navbar-brand" href="#">Shinkage Ryū</a>
+        <div class="container-fluid">
+	    <nav class="navbar navbar-default navbar-static-top">
+	        <div class="container">
+                    <div class="navbar-header vt-main-menu">
+			<!-- this button shows main menu when viewing from mobile devices -->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+                        </button>
+	                <!-- <a class="navbar-brand" href="#"><img src="{% static 'images/logo-transparent.png' %}" style="margin-top: -15px;"/></a> -->
+                        <a class="navbar-brand" href="#">Shinkage Ryū</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+		            <!-- <li><a href="/">Главная</a></li> -->
+		            <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
+		                <ul class="dropdown-menu">                    
+		                    <li><a href="/sr/history">История</a></li>		                    
+		                </ul>
+		            </li>		
+		            <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
+		                <ul class="dropdown-menu">
+                                    <li><a href="/sr/photo">Фото</a></li>
+		                    <li><a href="/sr/video">Видео</a></li>
+		                </ul>
+		            </li>
+		            <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контакты</a>
+		                <ul class="dropdown-menu">
+                                    <li><a href="/vt/contacts">Наша школа (Винг Тсун)</a></li>
+		                    <li><a href="/vt/address">Адрес (Винг Тсун)</a></li>		    
+		                </ul>
+		            </li>		
+	                </ul>
+                        <ul class="nav navbar-nav navbar-right">
+		            {% if request.user.is_authenticated %}
+                            <li><a href="/signout">Выйти</a></li>
+                            {% else %}
+                            <li><a href="/login">Войти</a></li>                        
+                            {% endif %}
+                        </ul>
+                    </div><!--/.nav-collapse -->
+	        </div>
+	    </nav>
+	    <div class="body row" style="height: 100%">
+	        <div class="col-md-2"></div>
+	        <div class="col-md-8 central-div">
+                    {% block body %}{% endblock %}
+	        </div>
+	        <div class="col-md-2"></div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-		<!-- <li><a href="/">Главная</a></li> -->
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
-		  <ul class="dropdown-menu">                    
-		    <li><a href="#history">История</a></li>
-		    <li><a href="#evtaa-sites">Рекоммендуемые сайты</a></li>
-		  </ul>
-		</li>		
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
-		  <ul class="dropdown-menu">
-                    <li><a href="#photo">Фото</a></li>
-		    <li><a href="/vt/video">Видео</a></li>
-		  </ul>
-		</li>
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контакты</a>
-		  <ul class="dropdown-menu">
-                    <li><a href="/vt/contacts">Наша школа</a></li>
-		    <li><a href="/vt/address">Адрес</a></li>		    
-		  </ul>
-		</li>		
-	      </ul>
-              <ul class="nav navbar-nav navbar-right">
-		{% if request.user.is_authenticated %}
-                <li><a href="/signout">Выйти</a></li>
-                {% else %}
-                <li><a href="/login">Войти</a></li>                        
-                {% endif %}
-              </ul>
-            </div><!--/.nav-collapse -->
-	  </div>
-	</nav>
-	<div class="body row">
-	  <div class="col-md-2"></div>
-	  <div class="col-md-8">
-            {% block body %}{% endblock %}
-	  </div>
-	  <div class="col-md-2"></div>
         </div>
-      </div>
     </body>
 </html>

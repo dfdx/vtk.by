@@ -1,0 +1,28 @@
+{% extends "sr/layout.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+<br/>
+
+<div id="text-markdown" style="display: none;">{{page.text}}</div>
+
+<div id="text-html">
+    <!-- to be filled by script -->
+</div>
+
+<hr/>
+{% if request.user.is_authenticated %}
+<div align="right">
+    <a href="/vt/editpage?slug={{page.slug}}" style="padding-right: 10px; color: #444; font-weight: bold;">Редактировать</a>
+</div>
+{% endif %}
+
+<script>
+ var markdown = $("#text-markdown").text();
+ var converter = new Markdown.Converter();
+ var html = converter.makeHtml(markdown);
+ $("#text-html").html(html);
+</script>
+
+{% endblock %}
