@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from vt.models import *
 
+THIS_SITE = 'sr'
+
 def info(req):
     return render(req, 'sr/info.html', {})
 
@@ -11,7 +13,8 @@ def info(req):
 
 def viewpage(req):
     slug = req.path.rsplit('/', 1)[-1]
-    pages = Page.objects.filter(slug=slug)
+    # site = req.path.rsplit('/', 1)[-2].strip('/')
+    pages = Page.objects.filter(slug=slug, site=THIS_SITE)
     if len(pages) == 1:        
         return render(req, 'sr/page.html', {'page': pages[0]})
     else:
@@ -35,7 +38,8 @@ def savepage(req):
     slug = req.POST['slug']
     Page.objects.update_or_create({
         'text': req.POST['text'],
-        'lang':  req.POST['lang']
+        'lang':  req.POST['lang'],
+        'site': THIS_SITE,
     }, slug=slug)
     # hack: both prefixes - /sr and /vt - will show the same page
     return redirect('/sr/' + req.POST['slug'])

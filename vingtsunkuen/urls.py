@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^signin$', vtviews.signin, name='signin'),
     url(r'^signout$', vtviews.signout, name='signout'),
     url(r'^vt/', include('vt.urls')),
-    url(r'^sr', include('sr.urls')),
+    url(r'^sr/', include('sr.urls')),
     url(r'^admin/', admin.site.urls),
 ]

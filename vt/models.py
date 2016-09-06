@@ -12,18 +12,18 @@ class ScheduledTraining(models.Model):
         return ("ScheduledTraining(%s, %s-%s)" %
                 (self.day_text, self.start_time, self.end_time))
 
-    
+
 class Event(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     place = models.CharField(max_length=500)
     description = models.CharField(max_length=2000)
-    
+
     def __str__(self):
         return ("Event(%s)" % (self.description,))
 
-    
-class News(models.Model):    
+
+class News(models.Model):
     pub_date = models.DateTimeField(default=datetime.now, blank=True)
     title = models.CharField(max_length=1024)
     text = models.TextField()
@@ -40,12 +40,13 @@ class ExternalVideo(models.Model):
     order = models.IntegerField()
     title = models.CharField(max_length=256)
     link = models.CharField(max_length=2048)
-    
+
 
 class Page(models.Model):
     slug = models.CharField(max_length=1024)
     text = models.TextField()
     lang = models.CharField(max_length=20)  # 'html' or 'markdown'
-    
+    site = models.CharField(max_length=10, default='vt')  # 'vt' or 'sr'
+
     def __str__(self):
-        return "Page(%s)" % (self.slug,)
+        return "Page(%s/%s)" % (self.site, self.slug,)

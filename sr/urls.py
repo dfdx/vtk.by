@@ -6,5 +6,7 @@ app_name = 'sr'
 urlpatterns = [
     url(r'^$', views.info, name='sr-info'),
     url(r'^info/$', views.info, name='sr-info'),
-    url(r'^', views.viewpage, name='viewpage'),
+    url(r'^editpage$', views.editpage, name='sr-editpage'),
+    url(r'^savepage$', views.savepage, name='sr-savepage'),
+    url(r'^', views.viewpage, name='sr-viewpage'),
 ]

@@ -15,7 +15,7 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active fade in" id="edit">
         <div id="wmd-button-bar"></div>
-        <form id="page-edit-form" method="POST" action="/vt/savepage">
+        <form id="page-edit-form" method="POST" action="/sr/savepage">
             {% csrf_token %}
             <input type="hidden" name="slug" value="{{page.slug}}"/>
             <input type="hidden" name="lang" value="markdown"/>
