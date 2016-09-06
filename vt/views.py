@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
 
+THIS_SITE = 'vt'
+
 def index(req):
     return render(req, 'vt/index.html', {})
 
@@ -77,7 +79,8 @@ def testpage(req):
 
 def viewpage(req):
     slug = req.path.rsplit('/', 1)[-1]
-    pages = Page.objects.filter(slug=slug)
+    # site = req.path.rsplit('/', 1)[-2].strip('/')
+    pages = Page.objects.filter(slug=slug, site=THIS_SITE)
     if len(pages) == 1:        
         return render(req, 'vt/page.html', {'page': pages[0]})
     else:
@@ -87,7 +90,7 @@ def viewpage(req):
 @login_required(login_url='/login')
 def editpage(req):
     slug = req.GET['slug']
-    pages = Page.objects.filter(slug=slug)
+    pages = Page.objects.filter(slug=slug, site=THIS_SITE)
     if len(pages) == 1:
         return render(req, 'vt/editpage.html', {'page': pages[0]})
     else:
@@ -98,9 +101,9 @@ def editpage(req):
 
 @login_required(login_url='/login')
 def savepage(req):
-    slug = req.POST['slug']
+    slug = req.POST['slug']    
     Page.objects.update_or_create({
         'text': req.POST['text'],
-        'lang':  req.POST['lang']
-    }, slug=slug)
+        'lang':  req.POST['lang'],
+    }, slug=slug, site=THIS_SITE)
     return redirect('/vt/' + req.POST['slug'])
