@@ -102,8 +102,13 @@
 	     height: 100%;
 	     padding-left: 5%;
 	     padding-right: 2%;
- 	     padding-bottom: 2%;
+ 	     padding-bottom: 0%;
 	 }
+
+         body, html {
+             height: 100%;
+         }
+         
 	</style>
 
         {% block extrahead %}
@@ -197,9 +202,13 @@
 	        <div class="col-md-2"></div>
 	        <div class="col-md-8 central-div">
                     {% block body %}{% endblock %}
+                    <hr/>
+                    <p style="font-size: 12px; font-style: italic">
+                        Вся информация, размещённая на сайте, является собственностью Европейской атлетической ассоциации Винг Тсун
+                    </p>
 	        </div>
 	        <div class="col-md-2"></div>
-            </div>
+            </div>            
         </div>
     </body>
 </html>
