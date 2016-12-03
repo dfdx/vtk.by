@@ -64,7 +64,7 @@ def store_image(folder, afile):
 def upload_image(req):
     for afile in req.FILES.getlist('files'):
         store_image(req.POST['folder'], afile)
-    return redirect('/vt/newphoto')
+    return redirect(req.META['HTTP_REFERER'])
 
 
 def _get_key_url(s3_client, bucket_name, key):
