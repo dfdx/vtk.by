@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^address$', views.address, name='address'),
     url(r'^schedule$', views.schedule, name='schedule'),
     url(r'^video$', views.video, name='video'),
+    url(r'^photo$', views.photo, name='photo'),
     url(r'^events$', views.events, name='events'),
     url(r'^contacts$', views.contacts, name='contacts'),
     url(r'^testpage$', views.testpage, name='testpage'),

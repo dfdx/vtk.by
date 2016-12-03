@@ -1,2 +1,4 @@
 django
 mysqlclient
+Pillow
+boto3

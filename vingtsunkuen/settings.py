@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'vingtsunkuen.apps.VingTsunKuenConfig',
     'vt.apps.VtConfig',
     'sr.apps.SrConfig',
     'django.contrib.admin',

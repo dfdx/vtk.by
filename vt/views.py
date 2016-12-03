@@ -3,44 +3,10 @@ from django.shortcuts import HttpResponse, render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
+from vingtsunkuen.models import *
+from itertools import groupby
 
 THIS_SITE = 'vt'
-
-def index(req):
-    return render(req, 'vt/index.html', {})
-
-
-def loginpage(req):
-    """Login page"""
-    next_page = req.GET.get('next')
-    return render(req, 'vt/login.html', {'next_page': next_page})
-
-
-def signin(req):
-    """Perform sign in"""
-    username = req.POST['username']
-    password = req.POST['password']
-    next_page = req.GET.get('next')
-    print(req.GET)
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(req, user)
-            if next_page:
-                return redirect(next_page)
-            else:
-                return redirect('/')
-        else:
-            return render(req, 'vt/login.html',
-                          {'error_message' : 'Пользователь не активен'})
-    else:
-        return render(req, 'vt/login.html',
-                      {'error_message' : 'Неверный логин и/или пароль'})
-
-
-def signout(req):
-    logout(req)
-    return redirect('/')
 
 
 def news(req):
@@ -55,6 +21,19 @@ def address(req):
 def schedule(req):
     trainings = ScheduledTraining.objects.order_by('day').all()
     return render(req, 'vt/schedule.html', {'trainings' : trainings})
+
+
+def photo(req):
+    albums = PhotoAlbum.objects.all()
+    cat_dict = {}
+    for album in albums:
+        if album.category not in cat_dict:
+            cat_dict[album.category] = []
+        cat_dict[album.category].append(album)
+    cats_sorted = sorted(cat_dict.items(), key=lambda t: t[0].order)
+    categories = [(c, sorted(als, key=lambda a: a.order))
+                  for c, als in cats_sorted]
+    return render(req, 'vt/photo.html', {'categories' : categories})
 
 
 def video(req):
@@ -81,7 +60,7 @@ def viewpage(req):
     slug = req.path.rsplit('/', 1)[-1]
     # site = req.path.rsplit('/', 1)[-2].strip('/')
     pages = Page.objects.filter(slug=slug, site=THIS_SITE)
-    if len(pages) == 1:        
+    if len(pages) == 1:
         return render(req, 'vt/page.html', {'page': pages[0]})
     else:
         return render(req, 'vt/page-doesnt-exist.html', {'slug': slug})
@@ -96,12 +75,12 @@ def editpage(req):
     else:
         new_page = Page(slug=slug, text='', lang='markdown')
         return render(req, 'vt/editpage.html', {'page': new_page})
-        
+
 
 
 @login_required(login_url='/login')
 def savepage(req):
-    slug = req.POST['slug']    
+    slug = req.POST['slug']
     Page.objects.update_or_create({
         'text': req.POST['text'],
         'lang':  req.POST['lang'],
