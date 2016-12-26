@@ -71,7 +71,7 @@ def _get_key_url(s3_client, bucket_name, key):
     params = {'Bucket': bucket_name, 'Key': key}
     url = s3_client.generate_presigned_url('get_object',
                                            Params = params,
-                                           ExpiresIn = 100)
+                                           ExpiresIn = 3600)
     return url
 
 
