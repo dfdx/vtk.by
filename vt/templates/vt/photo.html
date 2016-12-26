@@ -115,11 +115,10 @@ In the folder of skin CSS file there are also:
      var pswpElement = document.querySelectorAll('.pswp')[0];
      $.get('/photogallery?folder=' + folder, function (data) {
          var items = JSON.parse(data);
-         // define options (if needed)
          var options = {
-             // optionName: 'option value'
-             // for example:
-             index: 0 // start at first slide
+             index: 0, // start at first slide
+             closeElClasses: [],
+             closeOnScroll: false
          };
 
          // Initializes and opens PhotoSwipe
