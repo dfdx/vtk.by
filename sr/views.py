@@ -3,11 +3,26 @@ from django.shortcuts import HttpResponse, render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from vt.models import *
+from vingtsunkuen.models import *
 
 THIS_SITE = 'sr'
 
 def info(req):
     return render(req, 'sr/info.html', {})
+
+
+def photo(req):
+    albums = PhotoAlbum.objects.filter(site=THIS_SITE)
+    cat_dict = {}
+    for album in albums:
+        if album.category not in cat_dict:
+            cat_dict[album.category] = []
+        cat_dict[album.category].append(album)
+    cats_sorted = sorted(cat_dict.items(), key=lambda t: t[0].order)
+    categories = [(c, sorted(als, key=lambda a: a.order))
+                  for c, als in cats_sorted]
+    return render(req, 'sr/photo.html', {'categories' : categories})
+
 
 # free form pages
 

@@ -5,6 +5,7 @@ from . import views
 app_name = 'sr'
 urlpatterns = [
     url(r'^$', views.info, name='sr-info'),
+    url(r'^photo$', views.photo, name='photo'),
     url(r'^info/$', views.info, name='sr-info'),
     url(r'^editpage$', views.editpage, name='sr-editpage'),
     url(r'^savepage$', views.savepage, name='sr-savepage'),

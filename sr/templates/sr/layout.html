@@ -61,15 +61,15 @@
          }
         </style>
 
-	
+
 	<style type="text/css">
 	 @media (min-width: 1200px) {
 	     .container{
 		 max-width: 1000px;
 	     }
-	 }	 
+	 }
 	</style>
-	
+
 	<style>
 	  .vt-main-menu {
 	      /* color: #0000FF; */
@@ -136,10 +136,10 @@
 		            <!-- <li><a href="/">Главная</a></li> -->
 		            <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Информация</a>
-		                <ul class="dropdown-menu">                    
-		                    <li><a href="/sr/history">История</a></li>		                    
+		                <ul class="dropdown-menu">
+		                    <li><a href="/sr/history">История</a></li>
 		                </ul>
-		            </li>		
+		            </li>
 		            <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
 		                <ul class="dropdown-menu">
@@ -147,19 +147,25 @@
 		                    <li><a href="/sr/video">Видео</a></li>
 		                </ul>
 		            </li>
+			    <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея</a>
+		                <ul class="dropdown-menu">
+                                    <li><a href="photo">Фото</a></li>
+		                </ul>
+		            </li>
 		            <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контакты</a>
 		                <ul class="dropdown-menu">
                                     <li><a href="/vt/contacts">Наша школа (Винг Тсун)</a></li>
-		                    <li><a href="/vt/address">Адрес (Винг Тсун)</a></li>		    
+		                    <li><a href="/vt/address">Адрес (Винг Тсун)</a></li>
 		                </ul>
-		            </li>		
+		            </li>
 	                </ul>
                         <ul class="nav navbar-nav navbar-right">
 		            {% if request.user.is_authenticated %}
                             <li><a href="/signout">Выйти</a></li>
                             {% else %}
-                            <li><a href="/login">Войти</a></li>                        
+                            <li><a href="/login">Войти</a></li>
                             {% endif %}
                         </ul>
                     </div><!--/.nav-collapse -->

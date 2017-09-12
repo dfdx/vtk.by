@@ -24,7 +24,7 @@ def schedule(req):
 
 
 def photo(req):
-    albums = PhotoAlbum.objects.all()
+    albums = PhotoAlbum.objects.filter(site=THIS_SITE)
     cat_dict = {}
     for album in albums:
         if album.category not in cat_dict:
